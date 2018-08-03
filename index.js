@@ -1,6 +1,7 @@
-require('https-scheme')()
-const forceHttps = require('https-scheme')
-
-if (isProduction) {
-  forceHttps()
+function forceHttps () {
+  if (window.location.protocol !== 'https:') {
+    window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length)
+  }
 }
+
+module.exports = exports.default = forceHttps
